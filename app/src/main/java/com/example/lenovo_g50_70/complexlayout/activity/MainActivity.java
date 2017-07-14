@@ -1,11 +1,13 @@
 package com.example.lenovo_g50_70.complexlayout.activity;
 
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.lenovo_g50_70.complexlayout.R;
@@ -60,6 +62,23 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mGridLayoutManager);
         mAdapter = new ComplexAdapter(this, mModels);
         mRecyclerView.setAdapter(mAdapter);
+
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                GridLayoutManager.LayoutParams layoutParams = (GridLayoutManager.LayoutParams) view.getLayoutParams();
+                int spanSize = layoutParams.getSpanSize();
+                int spanIndex = layoutParams.getSpanIndex();
+                outRect.top = 20;
+                if (spanSize != mGridLayoutManager.getSpanCount()) {
+                    if (spanIndex == 1) {
+                        outRect.left = 10;
+                    } else {
+                        outRect.right = 10;
+                    }
+                }
+            }
+        });
 
         initData();
     }
