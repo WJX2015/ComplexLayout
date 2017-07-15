@@ -6,12 +6,13 @@ import android.widget.TextView;
 
 import com.example.lenovo_g50_70.complexlayout.bean.ComplexModel;
 import com.example.lenovo_g50_70.complexlayout.R;
+import com.example.lenovo_g50_70.complexlayout.bean.DataModelTwo;
 
 /**
  * Created by wjx on 2017/7/14.
  */
 
-public class HolderTwo extends BaseTypeHolder {
+public class HolderTwo extends BaseTypeHolder<DataModelTwo> {
 
     public ImageView mImageView;
     public TextView mTextView;
@@ -30,7 +31,7 @@ public class HolderTwo extends BaseTypeHolder {
      * @param model
      */
     @Override
-    public void bindViewHolder(ComplexModel model) {
+    public void bindViewHolder(DataModelTwo model) {
         mImageView.setBackgroundResource(model.getAvatarColor());
         mTextView.setText(model.getName());
         mView.setText(model.getContent());

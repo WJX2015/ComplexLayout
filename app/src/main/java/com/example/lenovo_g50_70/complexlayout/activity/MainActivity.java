@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager mLinearLayoutManager;
     private GridLayoutManager mGridLayoutManager;
 
-    private List<DataModelOne> mList1 =new ArrayList<>();
-    private List<DataModelTwo> mList2 =new ArrayList<>();
-    private List<DataModelThree> mList3 =new ArrayList<>();
+    private List<DataModelOne> mList1 = new ArrayList<>();
+    private List<DataModelTwo> mList2 = new ArrayList<>();
+    private List<DataModelThree> mList3 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,31 +52,33 @@ public class MainActivity extends AppCompatActivity {
     private void initModelLists() {
 
         //ModelOne
-        for(int i=0;i<10;i++){
-            DataModelOne one =new DataModelOne();
+        for (int i = 0; i < 10; i++) {
+            DataModelOne one = new DataModelOne();
             one.setAvatarColor(mColors[0]);
-            one.setName("name:"+i);
+            one.setName("name:" + i);
             mList1.add(one);
         }
 
         //ModelTwo
-        for(int i=0;i<10;i++){
-            DataModelTwo two =new DataModelTwo();
+        for (int i = 0; i < 10; i++) {
+            DataModelTwo two = new DataModelTwo();
             two.setAvatarColor(mColors[1]);
-            two.setName("name:"+i);
+            two.setName("name:" + i);
             two.setContent("content");
             mList2.add(two);
         }
 
         //ModelThree
-        for(int i=0;i<10;i++){
-            DataModelThree three =new DataModelThree();
+        for (int i = 0; i < 10; i++) {
+            DataModelThree three = new DataModelThree();
             three.setAvatarColor(mColors[2]);
-            three.setName("name:"+i);
+            three.setName("name:" + i);
             three.setContent("content");
             three.setContentColor(mColors[2]);
             mList3.add(three);
         }
+
+        mAdapter.setDataList(mList1, mList2, mList3);
     }
 
     /**
@@ -143,4 +145,6 @@ public class MainActivity extends AppCompatActivity {
         }
         mAdapter.setDataList(mModels);
     }
+
+
 }
