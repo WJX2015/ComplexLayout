@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import com.example.lenovo_g50_70.complexlayout.R;
 import com.example.lenovo_g50_70.complexlayout.adapter.ComplexAdapter;
 import com.example.lenovo_g50_70.complexlayout.bean.ComplexModel;
+import com.example.lenovo_g50_70.complexlayout.bean.DataModelOne;
+import com.example.lenovo_g50_70.complexlayout.bean.DataModelThree;
+import com.example.lenovo_g50_70.complexlayout.bean.DataModelTwo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +33,50 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager mLinearLayoutManager;
     private GridLayoutManager mGridLayoutManager;
 
+    private List<DataModelOne> mList1 =new ArrayList<>();
+    private List<DataModelTwo> mList2 =new ArrayList<>();
+    private List<DataModelThree> mList3 =new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initView();
+        initModelLists();
+    }
+
+    /**
+     * 初始化3个ModelList
+     */
+    private void initModelLists() {
+
+        //ModelOne
+        for(int i=0;i<10;i++){
+            DataModelOne one =new DataModelOne();
+            one.setAvatarColor(mColors[0]);
+            one.setName("name:"+i);
+            mList1.add(one);
+        }
+
+        //ModelTwo
+        for(int i=0;i<10;i++){
+            DataModelTwo two =new DataModelTwo();
+            two.setAvatarColor(mColors[1]);
+            two.setName("name:"+i);
+            two.setContent("content");
+            mList2.add(two);
+        }
+
+        //ModelThree
+        for(int i=0;i<10;i++){
+            DataModelThree three =new DataModelThree();
+            three.setAvatarColor(mColors[2]);
+            three.setName("name:"+i);
+            three.setContent("content");
+            three.setContentColor(mColors[2]);
+            mList3.add(three);
+        }
     }
 
     /**
@@ -69,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
                 GridLayoutManager.LayoutParams layoutParams = (GridLayoutManager.LayoutParams) view.getLayoutParams();
                 int spanSize = layoutParams.getSpanSize();
                 int spanIndex = layoutParams.getSpanIndex();
+                //outRect是当前Item占据面积的形状
                 outRect.top = 20;
+                outRect.bottom = 20;
                 if (spanSize != mGridLayoutManager.getSpanCount()) {
                     if (spanIndex == 1) {
                         outRect.left = 10;
